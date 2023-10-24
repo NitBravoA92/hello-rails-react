@@ -20,3 +20,25 @@ const initialState = {
   isLoading: false,
   error: null,
 };
+
+export const greetingsSlice = createSlice({
+  name: 'greetings',
+  initialState,
+  reducers: {},
+  extraReducers: (builder) => {
+    builder
+      .addCase(getRandomGreeting.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getRandomGreeting.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.greetings = action.payload;
+      })
+      .addCase(getRandomGreeting.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      });
+  },
+});
+
+export default greetingsSlice.reducer;
