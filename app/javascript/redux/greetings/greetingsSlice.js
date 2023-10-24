@@ -14,3 +14,9 @@ export const getRandomGreeting = createAsyncThunk(
     }
   },
 );
+
+const initialState = {
+  greetings: [],
+  isLoading: false,
+  error: null,
+};
